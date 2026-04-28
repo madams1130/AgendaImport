@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from db_table import db_table 
 import pandas as pd
 import sys
@@ -40,7 +42,7 @@ for _, row in bigTable.iterrows():
         "speaker": clean(row[str(colNames[7])])
     })
 
-rows = parsedAgenda.select(columns=["id", "date", "time_start", "time_end", "type"])
+rows = parsedAgenda.select(columns=["id", "date", "time_start", "time_end", "session_type"])
 
 for row in rows:
     print(row)
