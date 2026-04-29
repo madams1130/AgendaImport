@@ -142,7 +142,7 @@ if (sys.argv[1] == "speaker"):
     try:
         speakFind = (speakersTable.select(["id"], {"name" : sys.argv[2]}))[0]["id"]
     except IndexError:
-        print("No matching speaker found.")
+        print("No matching events found.")
         exit()
 
 
@@ -156,5 +156,9 @@ else:
     # normal search, less tricky
     searchResults = event_info.select(["id"], {sys.argv[1] : sys.argv[2]})
 
-    for result in searchResults:
-        pretty_print_session(result["id"])
+    if searchResults:
+        for result in searchResults:
+            pretty_print_session(result["id"])
+    else:
+        print("No matching events found.")
+        exit()
